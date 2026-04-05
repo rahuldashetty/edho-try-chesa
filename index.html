@@ -42,6 +42,14 @@
             user-select: none;
             -webkit-user-select: none;
         }
+
+        @keyframes floatUp {
+            0% { transform: translate(-50%, 0); opacity: 1; }
+            100% { transform: translate(-50%, -50px); opacity: 0; }
+        }
+        .floating-msg {
+            animation: floatUp 1s ease-out forwards;
+        }
     </style>
 </head>
 <body class="flex items-center justify-center p-4" x-data="crushApp()">
@@ -59,9 +67,9 @@
             
             <!-- Page 1: The Intro -->
             <div x-show="view === 'start'" class="animate__animated animate__fadeIn w-full">
-                <img src="https://i.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-2xl mb-4 shadow-lg object-cover">
+                <img src="https://i.giphy.com/media/SILTTnZ7qHX2Y6Oqtm/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-2xl mb-4 shadow-lg object-cover">
                 <p class="text-xl md:text-2xl font-bold text-gray-800 mb-4 leading-relaxed">
-                    Kotha city, kotha place... tension ga untav ani ee website chesa ra! 🥺
+                    Kotha city, kotha place... tension ga untav ani neekosame ee website chesa ra! 🥺
                 </p>
                 <p class="text-base md:text-lg text-gray-600">
                     Sare le, tension padaku. Nuvvu thope ra! Mundu ee button click chey...
@@ -75,8 +83,8 @@
                     <button @click="view = 'first_friend'; guilt = false" class="w-full sm:w-auto bg-pink-500 hover:bg-pink-600 text-white font-bold py-3.5 px-10 rounded-full shadow-lg active:scale-95 transition-all">
                         Sare, chupinchu ra! ✨
                     </button>
-                    <button @mouseenter="showGuilt('Bayyam lekapothe happy-ey ra, kani intha kastapadi rasanu kada... next click chey ra!')" 
-                            @click="showGuilt('Bayyam lekapothe happy-ey ra, kani intha kastapadi rasanu kada... next click chey ra!')"
+                    <button @mouseenter="showGuilt('Rey! Intha code rasanu kada ra, click chesi chavu! Overaction cheykunda click chey ra! 🥺🙏', $event)" 
+                            @click="showGuilt('Rey! Intha code rasanu kada ra, click chesi chavu! Overaction cheykunda click chey ra! 🥺🙏', $event)"
                             class="w-full sm:w-auto bg-white bg-opacity-50 text-gray-600 font-semibold py-3.5 px-8 rounded-full border border-pink-100 transition-all hover:bg-white">
                         Naku em bayyam ledu... 😎
                     </button>
@@ -85,7 +93,7 @@
 
             <!-- Page 2: First Female Friend -->
             <div x-show="view === 'first_friend'" class="animate__animated animate__fadeInRight w-full">
-                <img src="https://i.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-xl mb-4 shadow-md object-cover">
+                <img src="https://i.giphy.com/media/XZgemSAbwljyNWg3KL/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-xl mb-4 shadow-md object-cover">
                 <h2 class="text-2xl md:text-3xl font-bold text-pink-600 mb-4">The One & Only! ✨</h2>
                 <p class="text-base md:text-lg text-gray-800 leading-relaxed">
                     Nijam cheppali ante... na life lo first female friend nuvve ra! 😂 Ammayilatho matladali ante bayapade vadni, kani neetho friend ayyaka aa bayyam poyindi. Nuvvu thopu ra! 💪💖
@@ -99,8 +107,8 @@
                     <button @click="view = 'boss'; guilt = false" class="w-full sm:w-auto bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3.5 px-10 rounded-full shadow-lg active:scale-95 transition-all">
                         Inka? 😍
                     </button>
-                    <button @mouseenter="showGuilt('Idhi chala serious matter ra! First friend story skip chestunnava? Click chey ra!')" 
-                            @click="showGuilt('Idhi chala serious matter ra! First friend story skip chestunnava? Click chey ra!')"
+                    <button @mouseenter="showGuilt('Abba... build-up thagginchu ra! Intha hours kastapadi rasanu kada, please ra next click chey! 🥺😂', $event)" 
+                            @click="showGuilt('Abba... build-up thagginchu ra! Intha hours kastapadi rasanu kada, please ra next click chey! 🥺😂', $event)"
                             class="w-full sm:w-auto bg-white bg-opacity-50 text-gray-600 font-semibold py-3.5 px-8 rounded-full border border-pink-100 transition-all">
                         Nenu antha special ah? 😎
                     </button>
@@ -109,10 +117,10 @@
 
             <!-- Page 3: The Boss Manager -->
             <div x-show="view === 'boss'" class="animate__animated animate__fadeInRight w-full">
-                <img src="https://i.giphy.com/media/yFQ0ywscgobJK/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-xl mb-4 shadow-md object-cover">
-                <h2 class="text-2xl md:text-3xl font-bold text-pink-600 mb-4">Pichodu Manager! 💼</h2>
+                <img src="https://i.giphy.com/media/H5Ad3kUEUSiYhbCrNH/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-xl mb-4 shadow-md object-cover">
+                <h2 class="text-2xl md:text-3xl font-bold text-pink-600 mb-4">Nee Range-ey Veru! 👑</h2>
                 <p class="text-base md:text-lg text-gray-800 leading-relaxed">
-                    Memu andaram pichodi ki bayapadi thaduchukuntunappudu... nuvvu velli cool-ga manage chesav chudu, adhi ra nee level! 😂 Ee kotha city pichollu oka lekka kadu neeku! 💪✨
+                    Memandharam vallaki veellaki bayapadthunte... nuvvu mathram evvariki thaggaledhu ra! 😎 Ee kotha office lo kuda adhe range, adhe rage continue chesey. Nuvvu thopu ra! 💪✨
                 </p>
 
                 <div x-show="guilt" x-transition.opacity class="mt-4 p-3 bg-red-50 text-red-600 rounded-xl border border-red-100 animate__animated animate__headShake text-sm font-bold">
@@ -123,17 +131,17 @@
                     <button @click="view = 'village'; guilt = false" class="w-full sm:w-auto bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3.5 px-10 rounded-full shadow-lg active:scale-95 transition-all">
                         Inka? 😍
                     </button>
-                    <button @mouseenter="showGuilt('Pichodu lite-ey kani, ee page logic chala heavy ra! Please ra, inka click chey ra!')" 
-                            @click="showGuilt('Pichodu lite-ey kani, ee page logic chala heavy ra! Please ra, inka click chey ra!')"
+                    <button @mouseenter="showGuilt('Nee overaction thagalayya... memantha bayapadthunte nuvvu thope la unnav ani rasanu, skip cheyaku ra! 🥺💖', $event)" 
+                            @click="showGuilt('Nee overaction thagalayya... memantha bayapadthunte nuvvu thope la unnav ani rasanu, skip cheyaku ra! 🥺💖', $event)"
                             class="w-full sm:w-auto bg-white bg-opacity-50 text-gray-600 font-semibold py-3.5 px-8 rounded-full border border-pink-100 transition-all">
-                        Pichodu ante lite ra! 😎
+                        Nee range-ey veru ra! 😎
                     </button>
                 </div>
             </div>
 
             <!-- Page 4: Transformation -->
             <div x-show="view === 'village'" class="animate__animated animate__fadeInRight w-full">
-                <img src="https://i.giphy.com/media/13HgwGsXF0aiGY/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-xl mb-4 shadow-md object-cover">
+                <img src="https://i.giphy.com/media/TGWupTUfjggj5sRG6P/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-xl mb-4 shadow-md object-cover">
                 <h2 class="text-2xl md:text-3xl font-bold text-pink-600 mb-4">Nee Power-ey Veru! ✨</h2>
                 <p class="text-base md:text-lg text-gray-800 leading-relaxed">
                     Asalu na lanti erri pappu gadine koncham line lo pettavu ante... ee kotha city neeku oka lekka ra? 😂 Nuvvu asalu handle cheyaleni situation-ey undadu. Nuvvu super woman vi ra! 💪🔥
@@ -147,8 +155,8 @@
                     <button @click="view = 'roi'; guilt = false" class="w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-3.5 px-10 rounded-full shadow-lg transform transition active:scale-95">
                         Inka undha? 💣
                     </button>
-                    <button @mouseenter="showGuilt('Thope kani, na lanti erri pappu gadini line lo pettindi nuvve ga ra! Please ra, inka click chey ra!')" 
-                            @click="showGuilt('Thope kani, na lanti erri pappu gadini line lo pettindi nuvve ga ra! Please ra, inka click chey ra!')"
+                    <button @mouseenter="showGuilt('Nuvvu thope ra, kani naa effort ignore chesthe papam thagulthundi! Please ra next click chey! 🙏🔥', $event)" 
+                            @click="showGuilt('Nuvvu thope ra, kani naa effort ignore chesthe papam thagulthundi! Please ra next click chey! 🙏🔥', $event)"
                             class="w-full sm:w-auto bg-white bg-opacity-50 text-gray-600 font-semibold py-3.5 px-8 rounded-full border border-pink-100 transition-all">
                         Nenu eppudu thope ra! 😎
                     </button>
@@ -157,10 +165,10 @@
 
             <!-- Page 5: The Friendship ROI -->
             <div x-show="view === 'roi'" class="animate__animated animate__fadeInRight w-full px-4">
-                <img src="https://i.giphy.com/media/ANWIS2HYfROI8/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-xl mb-4 shadow-lg object-cover">
+                <img src="https://i.giphy.com/media/SILTTnZ7qHX2Y6Oqtm/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-xl mb-4 shadow-lg object-cover">
                 <h2 class="text-2xl md:text-3xl font-bold text-pink-600 mb-4">Friendship Audit! 📊</h2>
                 <p class="text-base md:text-lg text-gray-800 leading-relaxed">
-                    Nuvvu naku ye ammayini set cheyakapoyina... na debugging skills anni use chesi nee kosam ee website chesa chudu! Na logic antha "Zero ROI" aina, nuvvu navvithe chalu ra! 😎🔥
+                    Nuvvu naku ye ammayini set cheyakapoyina... na debugging skills anni use chesi nee kosam ee website chesa chudu! Nuvvu navvithe chalu ra, na hardwork ki ROI vachinatte! 😎🔥
                 </p>
 
                 <div x-show="guilt" x-transition.opacity class="mt-4 p-3 bg-red-50 text-red-600 rounded-xl border border-red-100 animate__animated animate__headShake text-sm font-bold">
@@ -171,8 +179,8 @@
                     <button @click="view = 'final'; guilt = false" class="w-full sm:w-auto bg-pink-500 hover:bg-pink-600 text-white font-bold py-3.5 px-10 rounded-full shadow-lg transform transition active:scale-95">
                         Next logic chupinchu ra! ✨
                     </button>
-                    <button @mouseenter="showGuilt('Arre... intha code rasi ninnu navvistunte, ammayila gurinchi matladathava ra? Next click chey!')" 
-                            @click="showGuilt('Arre... intha code rasi ninnu navvistunte, ammayila gurinchi matladathava ra? Next click chey!')"
+                    <button @mouseenter="showGuilt('Rey! Intha effort petti website chesthe overaction chesthunnav enti ra? Next click chey ra please! 🙏🥺', $event)" 
+                            @click="showGuilt('Rey! Intha effort petti website chesthe overaction chesthunnav enti ra? Next click chey ra please! 🙏🥺', $event)"
                             class="w-full sm:w-auto bg-white bg-opacity-50 text-gray-600 font-semibold py-3.5 px-8 rounded-full border border-pink-100 transition-all">
                         Ammayini eppudu set chesthav? 🤨
                     </button>
@@ -181,7 +189,7 @@
 
             <!-- Page 6: The Final Question -->
             <div x-show="view === 'final'" class="animate__animated animate__fadeIn relative w-full overflow-hidden px-4 no-select">
-                <img src="https://i.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-2xl mb-6 shadow-lg object-cover">
+                <img src="https://i.giphy.com/media/XZgemSAbwljyNWg3KL/giphy.gif" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-2xl mb-6 shadow-lg object-cover">
                 <p class="text-lg md:text-xl font-bold text-gray-800 mb-6 leading-relaxed">
                     Intha code rasi, intha logic rasi, ninnu navvinchadaniki intha hardwork chesa ra! 😂 <br><br>
                     So... first day office ela undi? Intha chesaka oka call/message chesi chepthava ledha?
@@ -208,7 +216,7 @@
 
             <!-- Final Page: Celebration -->
             <div x-show="view === 'celebrate'" class="animate__animated animate__bounceIn w-full px-4">
-                <img src="https://i.giphy.com/media/11sBLVxNs7v6WA/giphy.gif" class="w-48 h-48 md:w-56 md:h-56 mx-auto rounded-2xl mb-6 shadow-2xl object-cover border-4 border-white">
+                <img src="https://i.giphy.com/media/H5Ad3kUEUSiYhbCrNH/giphy.gif" class="w-48 h-48 md:w-56 md:h-56 mx-auto rounded-2xl mb-6 shadow-2xl object-cover border-4 border-white">
                 <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-4 uppercase tracking-tight">DONE! 🎉</h2>
                 <p class="text-lg md:text-xl text-gray-800 font-bold leading-relaxed">
                     Vellu... racha lepu ra! Office lo kotha records create cheyalsindhe! 💖🔥
@@ -235,9 +243,30 @@
                 dodgeStyle: '',
                 guilt: false,
                 guiltMsg: '',
-                showGuilt(msg) {
+                clickMessages: [
+                    "Abba... build-up thagginchu ra! Click chey! 🥺",
+                    "Rey! Intha code rasanu kada ra, click chesi chavu! 🙏",
+                    "Nee overaction thagalayya... please ra okka click! 🥺",
+                    "Kotha city vellav ani chusthunna... please build-up thagginchu! 😂",
+                    "Intha effort ignore chesthe papam thagulthundi ra! Please! 🥺✨",
+                    "Sare ra thope... please okka click chey ra! 🙏",
+                    "Logic lu thagalayya... click chey ra please! 🥺",
+                    "Nuvvu thope ra, kani please okka click chey ra! 🙏✨"
+                ],
+                handleGlobalClick(e) {
+                    const msg = this.clickMessages[Math.floor(Math.random() * this.clickMessages.length)];
+                    const el = document.createElement('div');
+                    el.className = 'fixed pointer-events-none text-pink-600 font-bold text-sm z-[100] floating-msg no-select';
+                    el.innerText = msg;
+                    el.style.left = `${e.clientX}px`;
+                    el.style.top = `${e.clientY}px`;
+                    document.body.appendChild(el);
+                    setTimeout(() => el.remove(), 1000);
+                },
+                showGuilt(msg, e) {
                     this.guilt = true;
                     this.guiltMsg = msg;
+                    if (e) this.handleGlobalClick(e);
                 },
                 dodge(e) {
                     this.dodged = true;
